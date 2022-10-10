@@ -1,4 +1,5 @@
 import React from 'react'
+import FeatureProducts from '../componant/FeatureProducts'
 // import styled from 'styled-components'
 import Herosection from '../componant/Herosection'
 const Home = () => {
@@ -6,7 +7,10 @@ const Home = () => {
     name:"Man store"
   }
   return (
-    <Herosection myData={data} />
+    <div>
+      <Herosection myData={data} /> 
+      <FeatureProducts/>
+    </div>
   )
 }
 
