@@ -9,6 +9,7 @@ import { Container } from '../style.css/Container';
 import FormatPrice from '../helper/FormatPrice';
 import { TbReplace, TbTruckDelivery } from "react-icons/tb";
 import { MdSecurity } from "react-icons/md";
+import Star from '../componant/Star';
 
 
 const API = "https://api.pujakaitem.com/api/products";
@@ -40,8 +41,8 @@ const SingleProduct = () => {
           {/* product Data */}
           <div className="product-data">
             <h2>{name} </h2>
-            <p>{stars}</p>
-            <p>{reviews} reviews</p>
+            <Star stars={stars} reviews={reviews} />
+
             <p className="product-data-price">
               MRP:
               <del>
