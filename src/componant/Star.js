@@ -6,12 +6,12 @@ import styled from 'styled-components';
 
 const Star = ({ stars, reviews }) => {
 
-    const ratingStar = Array.from({ length: 5 }, (elem, index) => {
-        let number = index + 0.5;
+    const ratingStar = Array.from({ length: 5 }, (v, i) => {
+        let number =i + 0.5;
         return(
-            <span key={index}>
+            <span key={i}>
                     {
-                        stars>= index+1 ? (<FaStar className='icon'/>):stars>=number?(<FaStarHalfAlt className='icon'/>):(<AiOutlineStar className='icon'/>)
+                        stars>=i+1 ? (<FaStar className='icon'/>):stars>=number?(<FaStarHalfAlt className='icon'/>):(<AiOutlineStar className='icon'/>)
                     }
             </span>
         )

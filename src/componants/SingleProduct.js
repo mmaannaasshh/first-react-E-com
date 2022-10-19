@@ -10,15 +10,16 @@ import FormatPrice from '../helper/FormatPrice';
 import { TbReplace, TbTruckDelivery } from "react-icons/tb";
 import { MdSecurity } from "react-icons/md";
 import Star from '../componant/Star';
+import AdToCart from '../componant/AdToCart';
 
 
-const API = "https://api.pujakaitem.com/api/products";
+const API = "https://api.pujakaitem.com/api/products/thapaserialnoa";
 
 
-const SingleProduct = () => {
+const SingleProducte = () => {
   const { singleProduct, isSingleLoading, singleProoduct } = useProductContext()
   const { id } = useParams();
-  const { id: alies, name, company, price, description, category, stock, stars, reviews, image } = singleProoduct;
+  const { name, company, price, description, stock, stars, reviews, image } = singleProoduct;
 
   useEffect(() => {
     singleProduct(`${API}?id=${id}`)
@@ -80,9 +81,14 @@ const SingleProduct = () => {
                   <p>
                     Brand: <span>{company} </span>
                   </p>
+
               </div>
+              <hr />
+                {stock>0 && <AdToCart products={singleProoduct}   />}
+              
 
           </div>
+
         </div>
       </Container>
 
@@ -90,6 +96,7 @@ const SingleProduct = () => {
   )
 };
 const Wrapper = styled.section`
+
   .container {
     padding: 9rem 0;
   }
@@ -140,7 +147,7 @@ const Wrapper = styled.section`
         font-weight: bold;
       }
     }
-    hr {
+    hr{
       max-width: 100%;
       width: 90%;
       /* height: 0.2rem; */
@@ -159,4 +166,4 @@ const Wrapper = styled.section`
 `;
 
 
-export default SingleProduct;
+export default SingleProducte;
