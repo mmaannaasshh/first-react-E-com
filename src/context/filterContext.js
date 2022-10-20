@@ -7,7 +7,8 @@ const FiletrContext=createContext();
 
 const initialState={
     filter_products:[],
-    all_products:[]
+    all_products:[],
+    grid_view:true,
 }
 
 
@@ -16,6 +17,15 @@ export const FilterContextProvider=({children})=>{
     const {products}=useProductContext();
 
     const [state, dispatch] = useReducer(reducer,initialState);
+
+//to set the grid view
+const setGridView=()=>{
+    return dispatch({type:'SET_GRIDVIEW'})
+}
+
+
+
+
 
     useEffect(()=>{
         dispatch({type:'LOAD_FILTER_PRODUCTS',payload:products});
@@ -28,7 +38,7 @@ export const FilterContextProvider=({children})=>{
 
 
 
-return <FiletrContext.Provider value={{...state}} >
+return <FiletrContext.Provider value={{...state,setGridView}} >
     {children}
 </FiletrContext.Provider>
 }

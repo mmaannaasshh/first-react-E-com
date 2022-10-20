@@ -18,9 +18,9 @@ const MyImage = ({imgs=[{url:''}]}) => {
   return (
     <Wrapper>
       <div className="grid grid-four-column">
-        {imgs.map((e,index)=>{
-          return( <figure>
-            <img src={e.url} alt={e.filename} className="box-image--style" key={index}  onClick={()=>{setMainImage(e)}}   />
+        {imgs.map((e,i)=>{
+          return( <figure key={i}>
+            <img  src={e.url} alt={e.filename} className="box-image--style"  onClick={()=>{setMainImage(e)}}   />
           </figure>)
         })}
       </div>

@@ -13,7 +13,7 @@ import Star from '../componant/Star';
 import AdToCart from '../componant/AdToCart';
 
 
-const API = "https://api.pujakaitem.com/api/products/thapaserialnoa";
+const API = "https://api.pujakaitem.com/api/products";
 
 
 const SingleProducte = () => {
@@ -84,7 +84,7 @@ const SingleProducte = () => {
 
               </div>
               <hr />
-                {stock>0 && <AdToCart products={singleProoduct}   />}
+                {stock>0 && <AdToCart products={singleProoduct}/>}
               
 
           </div>
