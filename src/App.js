@@ -20,6 +20,7 @@ function App() {
   const theme= {
     colors:{
       bg:"#F6F8FA",
+      black:"#000",
       helper:"green",
       white:"#fff",
       footer_bg:"#0a1435",

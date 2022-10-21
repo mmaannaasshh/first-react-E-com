@@ -8,7 +8,7 @@ const FiletrContext=createContext();
 const initialState={
     filter_products:[],
     all_products:[],
-    grid_view:true,
+    grid_view:false,
 }
 
 
@@ -22,7 +22,9 @@ export const FilterContextProvider=({children})=>{
 const setGridView=()=>{
     return dispatch({type:'SET_GRIDVIEW'})
 }
-
+const setListView=()=>{
+    return dispatch({type:'SET_LISTVIEW'})
+}
 
 
 
@@ -38,7 +40,7 @@ const setGridView=()=>{
 
 
 
-return <FiletrContext.Provider value={{...state,setGridView}} >
+return <FiletrContext.Provider value={{...state,setGridView,setListView}} >
     {children}
 </FiletrContext.Provider>
 }

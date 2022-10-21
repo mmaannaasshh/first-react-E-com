@@ -13,6 +13,11 @@ switch (action.type) {
                 ...state,
                 grid_view:true
             }
+            case 'SET_LISTVIEW':
+            return{
+                ...state,
+                grid_view:false
+            }
        
 
     default:
