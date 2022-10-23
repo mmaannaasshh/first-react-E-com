@@ -1,24 +1,25 @@
 import React from 'react'
 import styled from 'styled-components';
-import {useFilterContext} from '../../context/filterContext'
-import {BsFillGridFill,BsList} from 'react-icons/bs'
+import { useFilterContext } from '../../context/filterContext'
+import { BsFillGridFill, BsList } from 'react-icons/bs'
 
 const Sort = () => {
 
-  const {grid_view,setGridView,setListView,filter_products}=useFilterContext()
+  const { grid_view, setGridView, setListView, filter_products,shorting} = useFilterContext()
+
 
 
   return (
     <Wrapper className='sort-section'>
 
       <div className="sorting-list--grid ">
-        <button className={grid_view?'sort-btn active':'sort-btn'}
-        onClick={setGridView}
+        <button className={grid_view ? 'sort-btn active' : 'sort-btn'}
+          onClick={setGridView}
         >
-        <BsFillGridFill className='icon' />
+          <BsFillGridFill className='icon' />
         </button>
-        <button className={!grid_view?'sort-btn active':'sort-btn'} onClick={setListView}>
-        <BsList className='icon' />
+        <button className={!grid_view ? 'sort-btn active' : 'sort-btn'} onClick={setListView}>
+          <BsList className='icon' />
         </button>
       </div>
       <div className="product-data">
@@ -26,10 +27,20 @@ const Sort = () => {
 
 
 
-          </div>
-      
-      <div className="product-data">Dropdown  </div>
-      
+      </div>
+
+      <div className="product-data">
+        <form action='#' >
+          <label htmlFor="sort"></label>
+          <select name="sort" id="sortingg" onClick={shorting} >
+            <option value="lowest">price(lowest)</option>
+            <option value="highest">price(highest)</option>
+            <option value="a-z">price(a-z)</option>
+            <option value="z-a">price(z-a)</option>
+          </select>
+        </form>
+      </div>
+
     </Wrapper>
   )
 };
