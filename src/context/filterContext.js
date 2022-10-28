@@ -9,7 +9,10 @@ const initialState = {
     filter_products: [],
     all_products: [],
     grid_view: true,
-    shorting_value:"lowest"
+    shorting_value: "lowest",
+    filter:{
+        text:''
+    }
 }
 
 
@@ -27,13 +30,22 @@ export const FilterContextProvider = ({ children }) => {
         return dispatch({ type: 'SET_LISTVIEW' })
     }
     // sorting function
-    const shorting = () => {
-        dispatch({type:'SHORTING'})
+    const shorting = (event) => {
+        let userValue = event.target.value;
+        dispatch({ type: 'SHORTING', payload: userValue })
     }
-useEffect(()=>{
-dispatch({type:'SHORTING_PRODUCT',payload:products})
+    const updateFilter=(event)=>{
+       let name=event.target.name;
+        let value=event.target.value;
+        dispatch({type:'UPDATE_FILTER_VALUE',payload:{name,value}})
+    }
+    useEffect(()=>{
+dispatch({type:'UPDATE_FILTER'})
+    },[products,state.filter])
+    useEffect(() => {
+        dispatch({ type: 'SHORTING_PRODUCT' })
 
-},[state.shorting_value])
+    }, [products, state.shorting_value])
 
 
     useEffect(() => {
@@ -41,7 +53,7 @@ dispatch({type:'SHORTING_PRODUCT',payload:products})
     }, [products])
 
 
-    return ( <FiletrContext.Provider value={{ ...state, setGridView, setListView, shorting }} >
+    return (<FiletrContext.Provider value={{ ...state, setGridView, setListView, shorting,updateFilter}} >
         {children}
     </FiletrContext.Provider>
     )
