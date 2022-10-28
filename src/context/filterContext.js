@@ -11,7 +11,9 @@ const initialState = {
     grid_view: true,
     shorting_value: "lowest",
     filter:{
-        text:''
+        text:'',
+        category:'all',
+        company:'all'
     }
 }
 

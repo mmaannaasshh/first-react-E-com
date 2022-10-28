@@ -53,12 +53,23 @@ const filterReducer = (state, action) => {
             case 'UPDATE_FILTER':
                 const { all_products}=state;
                 let tempFilterProduct=[...all_products]
-                const {text}=state.filter
+                const {text,category,company}=state.filter
                 if (text) {
                     tempFilterProduct=tempFilterProduct.filter((e)=>{
                         return e.name.toLowerCase().includes(text)
                     })
                 }
+                if (category) {
+                    tempFilterProduct=tempFilterProduct.filter((e)=>{
+                        return e.category===category;
+                    })
+                }
+                if (company) {
+                    tempFilterProduct=tempFilterProduct.filter((e)=>{
+                        return e.company.toLowerCase()===company.toLowerCase()
+                    })
+                }
+                
                 return{
                    ...state,
                    filter_products:tempFilterProduct
