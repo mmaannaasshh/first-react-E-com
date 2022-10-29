@@ -59,12 +59,12 @@ const filterReducer = (state, action) => {
                         return e.name.toLowerCase().includes(text)
                     })
                 }
-                if (category) {
+                if (category!=="all") {
                     tempFilterProduct=tempFilterProduct.filter((e)=>{
                         return e.category===category;
                     })
                 }
-                if (company) {
+                if (company!=="all") {
                     tempFilterProduct=tempFilterProduct.filter((e)=>{
                         return e.company.toLowerCase()===company.toLowerCase()
                     })

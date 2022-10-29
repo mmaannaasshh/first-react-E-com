@@ -10,10 +10,10 @@ const initialState = {
     all_products: [],
     grid_view: true,
     shorting_value: "lowest",
-    filter:{
-        text:'',
-        category:'all',
-        company:'all'
+    filter: {
+        text: '',
+        category: 'all',
+        company: 'all'
     }
 }
 
@@ -36,14 +36,14 @@ export const FilterContextProvider = ({ children }) => {
         let userValue = event.target.value;
         dispatch({ type: 'SHORTING', payload: userValue })
     }
-    const updateFilter=(event)=>{
-       let name=event.target.name;
-        let value=event.target.value;
-        dispatch({type:'UPDATE_FILTER_VALUE',payload:{name,value}})
+    const updateFilter = (event) => {
+        let name = event.target.name;
+        let value = event.target.value;
+        dispatch({ type: 'UPDATE_FILTER_VALUE', payload: { name, value } })
     }
-    useEffect(()=>{
-dispatch({type:'UPDATE_FILTER'})
-    },[products,state.filter])
+    useEffect(() => {
+        dispatch({ type: 'UPDATE_FILTER' })
+    }, [products, state.filter])
     useEffect(() => {
         dispatch({ type: 'SHORTING_PRODUCT' })
 
@@ -55,7 +55,7 @@ dispatch({type:'UPDATE_FILTER'})
     }, [products])
 
 
-    return (<FiletrContext.Provider value={{ ...state, setGridView, setListView, shorting,updateFilter}} >
+    return (<FiletrContext.Provider value={{ ...state, setGridView, setListView, shorting, updateFilter }} >
         {children}
     </FiletrContext.Provider>
     )

@@ -2,14 +2,14 @@ import React from 'react'
 import styled from 'styled-components'
 import { useFilterContext } from '../../context/filterContext'
 const FilterSection = () => {
-  const { filter: { text, category }, updateFilter, all_products } = useFilterContext();
+  const { filter: { text, category,company }, updateFilter, all_products } = useFilterContext();
   // we need unic data
 
   const newCategoryData = (data, property) => {
     let newval = data.map((e) => {
       return e[property]
     })
-    return (newval = ["All", ...new Set(newval)])
+    return (newval = ["all", ...new Set(newval)])
   }
 
 
@@ -36,10 +36,10 @@ const FilterSection = () => {
       <div className="filter-company">
         <h3>Company</h3>
         <form action="#">
-          <select name="company" id="company" className='filter-company--select' onClick={updateFilter} > 
-          {companyOnlyData.map((e,i)=>{
-            return <option key={i} value={e} name="comapny" >{e } </option>
-          })}
+          <select name="company" id="company" className='filter-company--select' onClick={updateFilter} >
+            {companyOnlyData.map((e, i) => {
+              return <option key={i} value={e} name="comapny" >{e} </option>
+            })}
           </select>
         </form>
       </div>
