@@ -2,8 +2,9 @@ import React from 'react'
 import styled from 'styled-components'
 import { useFilterContext } from '../../context/filterContext'
 import { FaCheck } from 'react-icons/fa';
+import FormatPrice from './../../helper/FormatPrice';
 const FilterSection = () => {
-  const { filter: { text,color }, updateFilter, all_products } = useFilterContext();
+  const { filter: { text,color,price,maxPrice,minPrice}, updateFilter, all_products } = useFilterContext();
   
   // we need unic data
 
@@ -66,6 +67,15 @@ const FilterSection = () => {
              
              </button>)
           })}
+        </div>
+      </div>
+
+      <div className="filter_price">
+        <h3>Price</h3>
+        <p><FormatPrice price={price} /></p>
+        <div>
+        <input type="range"
+         min={minPrice} max={maxPrice} name="price" value={price} onChange={updateFilter}  />
         </div>
       </div>
     </Wrapper>
