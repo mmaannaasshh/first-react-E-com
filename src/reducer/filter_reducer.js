@@ -94,7 +94,20 @@ const filterReducer = (state, action) => {
                 ...state,
                 filter_products: tempFilterProduct
             }
-
+case 'CLEAR_FILTER':
+    return{
+        ...state,
+        filter:{
+        ...state.filter,
+        text: '',
+        category: 'all',
+        company: 'all',
+        color:'all',
+        maxPrice:state.filter.maxPrice,
+        price:state.filter.maxPrice,
+        minPrice:0,
+        }
+    }
 
 
 

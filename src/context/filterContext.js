@@ -45,6 +45,9 @@ export const FilterContextProvider = ({ children }) => {
         let value = event.target.value;
         dispatch({ type: 'UPDATE_FILTER_VALUE', payload: { name, value } })
     }
+    const clearFilter=()=>{
+        dispatch({type:'CLEAR_FILTER'})
+    }
     useEffect(() => {
         dispatch({ type: 'UPDATE_FILTER' })
     }, [products, state.filter])
@@ -59,7 +62,7 @@ export const FilterContextProvider = ({ children }) => {
     }, [products])
 
 
-    return (<FiletrContext.Provider value={{ ...state, setGridView, setListView, shorting, updateFilter }} >
+    return (<FiletrContext.Provider value={{ ...state, setGridView, setListView, shorting, updateFilter,clearFilter }} >
         {children}
     </FiletrContext.Provider>
     )
