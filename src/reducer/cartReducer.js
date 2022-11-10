@@ -18,8 +18,17 @@ switch (action.type) {
       ...state,
       cart:[...state.cart,cartProduct]
     }
-    
-   
+    case 'REMOVE_ITEM':
+      let updatedCart=state.cart.filter((e)=>e.id!==action.payload)
+      return{
+        ...state,
+        cart:updatedCart
+      }
+   case 'CLEAR_CART':
+    return{
+      ...state,
+      cart:[]
+    }
 
   default:
     return state

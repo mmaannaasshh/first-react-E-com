@@ -1,10 +1,20 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import { useCartContext } from '../context/cart_context';
+import { Button } from '../style.css/Button';
 import CartItem from './../componant/componantForProduct/CartItem';
 
 const Cart = () => {
-  const { cart } = useCartContext()
+  const { cart, clearCart } = useCartContext()
+
+if (cart.length===0) {
+  return <Emptydiv>
+    <h3>No Cart in Item </h3>
+  </Emptydiv>
+}
+
+
   return (
     <Wrapper>
       <div className="container">
@@ -22,15 +32,38 @@ const Cart = () => {
         </div>
         <hr />
         <div className="cart_item">
-          {cart.map((e)=>{
-            return <CartItem key={e.id} {...e}/>
+          {cart.map((e) => {
+            return <CartItem key={e.id} {...e} />
           })}
+        </div>
+        <hr />
+        <div className="cart-two-button">
+          <NavLink to="/products" >
+            <Button  >Continue Shopping </Button>
+
+          </NavLink>
+          <Button className='btn  btn-clear' onClick={clearCart} >
+            clear cart
+          </Button>
         </div>
 
       </div>
     </Wrapper>
   )
 };
+const Emptydiv=styled.div`
+display:grid ;
+place-items:center ;
+height:50vh;
+h3{
+  font-size:4.2rem ;
+  text-transform:capitalize ;
+  font-weight:300 ;
+}
+`
+
+
+
 const Wrapper = styled.section`
   padding: 9rem 0;
   .grid-four-column {

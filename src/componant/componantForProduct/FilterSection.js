@@ -2,11 +2,11 @@ import React from 'react'
 import styled from 'styled-components'
 import { useFilterContext } from '../../context/filterContext'
 import { FaCheck } from 'react-icons/fa';
-import {Button} from '../../style.css/Button'
+import { Button } from '../../style.css/Button'
 import FormatPrice from './../../helper/FormatPrice';
 const FilterSection = () => {
-  const { filter: { text,color,price,maxPrice,minPrice}, updateFilter, all_products,clearFilter } = useFilterContext();
-  
+  const { filter: { text, color, price, maxPrice, minPrice }, updateFilter, all_products, clearFilter } = useFilterContext();
+
   // we need unic data
 
   const newCategoryData = (data, property) => {
@@ -58,15 +58,15 @@ const FilterSection = () => {
         <h3>Colors</h3>
         <div className="filter-color-style">
           {colorsData.map((e, i) => {
-            if (e==="all") {
-              return (<button type='button' className="color-all--style" key={i} name="color" value={e} onClick={updateFilter} > 
-             all 
-               </button>)
+            if (e === "all") {
+              return (<button type='button' className="color-all--style" key={i} name="color" value={e} onClick={updateFilter} >
+                all
+              </button>)
             }
-            return( <button type='button' className="btnStyle"   style={{ backgroundColor:e }} key={i} name="color" value={e} onClick={updateFilter} > 
-              {color === e ? <FaCheck className="checkStyle" /> : null }
-             
-             </button>)
+            return (<button type='button' className="btnStyle" style={{ backgroundColor: e }} key={i} name="color" value={e} onClick={updateFilter} >
+              {color === e ? <FaCheck className="checkStyle" /> : null}
+
+            </button>)
           })}
         </div>
       </div>
@@ -75,13 +75,13 @@ const FilterSection = () => {
         <h3>Price</h3>
         <p><FormatPrice price={price} /></p>
         <div>
-        <input type="range"
-         min={minPrice} max={maxPrice} name="price" value={price} onChange={updateFilter}  />
+          <input type="range"
+            min={minPrice} max={maxPrice} name="price" value={price} onChange={updateFilter} />
         </div>
       </div>
       <div className="filter-clear">
         <Button className='btn' onClick={clearFilter} >
-clearFilter
+          clearFilter
         </Button>
       </div>
     </Wrapper>

@@ -81,7 +81,7 @@ const SingleProducte = () => {
                   <p>
                     Brand: <span>{company} </span>
                   </p>
-
+        
               </div>
               <hr />
                 {stock>0 && <AdToCart products={singleProoduct}/>}
